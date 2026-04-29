@@ -353,6 +353,24 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
 .splash-app-subtitle{margin:2px 0 0 0;font-size:.78rem;font-weight:500;letter-spacing:.22em;color:#f0a500;text-transform:uppercase}
 .splash-progress{width:160px;height:3px;background:#1e2330;border-radius:2px;overflow:hidden;margin-top:20px}
 .splash-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#d4870a,#f0a500);border-radius:2px;transition:width .08s linear}
+
+/* ── TYPE SELECT ── */
+.type-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.type-card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:32px 20px 24px;cursor:pointer;transition:border-color .2s,transform .15s,box-shadow .2s;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;position:relative}
+.type-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,165,0,.12)}
+.type-card:active{transform:translateY(0)}
+.type-card--adm:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(58,123,213,.12)}
+.type-icon{font-size:2.8rem;line-height:1}
+.type-card h3{margin:0;font-size:1rem;font-weight:800;letter-spacing:.14em;color:var(--text)}
+.type-card p{margin:0;font-size:.78rem;color:var(--muted);line-height:1.5}
+.type-badge{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:rgba(240,165,0,.15);color:#f0a500;margin-top:4px}
+.type-badge--soon{background:rgba(58,123,213,.15);color:var(--blue)}
+/* ── ADM PLACEHOLDER ── */
+.adm-placeholder{text-align:center;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.adm-placeholder .ph-icon{font-size:3.5rem}
+.adm-placeholder h2{margin:0;font-size:1.1rem;font-weight:800;letter-spacing:.1em;color:var(--text)}
+.adm-placeholder p{margin:0;color:var(--muted);font-size:.875rem;max-width:300px;line-height:1.6}
+@media(max-width:480px){.type-cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -414,7 +432,43 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
 </div>
 
 <!-- ══════ LANDING ══════ -->
-<div class="screen active" id="screen-landing">
+<!-- ══════ TYPE SELECT ══════ -->
+<div class="screen active" id="screen-type-select">
+<div class="container">
+  <div class="landing-hero">
+    <h1>AUDITORIA <span>5S</span></h1>
+    <p>Selecione o perfil de acesso para continuar</p>
+  </div>
+  <div class="type-cards">
+    <div class="type-card" onclick="showScreen('screen-landing')" role="button" tabindex="0">
+      <span class="type-icon">🏭</span>
+      <h3>PRODUÇÃO</h3>
+      <p>Avaliação de percepção e auditoria física do almoxarifado. Dashboard de equipe.</p>
+      <span class="type-badge">Disponível</span>
+    </div>
+    <div class="type-card type-card--adm" onclick="showScreen('screen-adm')" role="button" tabindex="0">
+      <span class="type-icon">📋</span>
+      <h3>ADM</h3>
+      <p>Gestão de formulários, configuração de critérios e análise gerencial.</p>
+      <span class="type-badge type-badge--soon">Em construção</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════ ADM PLACEHOLDER ══════ -->
+<div class="screen" id="screen-adm">
+<div class="container">
+  <div class="adm-placeholder">
+    <span class="ph-icon">🚧</span>
+    <h2>EM CONSTRUÇÃO</h2>
+    <p>O módulo ADM está sendo desenvolvido. Em breve você poderá gerenciar formulários, configurar critérios e acessar análises gerenciais.</p>
+    <button class="btn-primary" style="margin-top:8px" onclick="showScreen('screen-type-select')">← Voltar</button>
+  </div>
+</div>
+</div>
+
+<div class="screen" id="screen-landing">
 <div class="container">
   <div class="landing-hero">
     <h1>AVALIAÇÃO <span>5S</span></h1>
@@ -1342,7 +1396,7 @@ function showToast(msg,color='#3ecf72'){
   window.updateBackBtn = function(id){
     var btn = document.getElementById('float-back');
     if(!btn) return;
-    btn.style.display = (id && id !== 'screen-landing') ? 'flex' : 'none';
+    btn.style.display = (id && id !== 'screen-type-select' && id !== 'screen-adm') ? 'flex' : 'none';
   };
   window.shareWhatsApp = function(){
     try{
