@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = '5s-assessment-v3.0.4';
+const CACHE_NAME = '5s-assessment-v3.0.5';
 const ASSETS = [
   './',
   './index.html',
@@ -8,13 +8,14 @@ const ASSETS = [
   './manifest.json',
   './audit5s-config-upgrade.js',
   './audit5s-history-dashboard.js',
+  './audit5s-area-evolution.js',
   './audit5s-whatsapp-share-fix.js',
   './audit5s-pwa-update.js'
 ];
 
 function injectScripts(html){
-  const scripts = '\n<script src="audit5s-config-upgrade.js" defer></script>\n<script src="audit5s-history-dashboard.js" defer></script>\n<script src="audit5s-whatsapp-share-fix.js" defer></script>\n<script src="audit5s-pwa-update.js" defer></script>\n';
-  if(html.includes('audit5s-history-dashboard.js')) return html;
+  const scripts = '\n<script src="audit5s-config-upgrade.js" defer></script>\n<script src="audit5s-history-dashboard.js" defer></script>\n<script src="audit5s-area-evolution.js" defer></script>\n<script src="audit5s-whatsapp-share-fix.js" defer></script>\n<script src="audit5s-pwa-update.js" defer></script>\n';
+  if(html.includes('audit5s-area-evolution.js')) return html;
   if(html.includes('</body>')) return html.replace('</body>', scripts + '</body>');
   return html + scripts;
 }
