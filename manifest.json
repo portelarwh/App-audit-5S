@@ -1,6 +1,6 @@
 {
   "name": "OPERIX · 5S Assessment",
-  "short_name": "5S Assessment",
+  "short_name": "5S - Auditoria",
   "description": "Ferramenta de avaliação 5S para Almoxarifado — diagnóstico de baseline, auditoria física e dashboard de equipe.",
   "start_url": "./5S_Assessment.html",
   "scope": "./",
