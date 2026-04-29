@@ -338,9 +338,60 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
 /* WhatsApp share button */
 .btn-whatsapp{ background:#25d366 !important; color:#fff !important; border:none !important; }
 .btn-whatsapp:hover{ background:#20b358 !important; }
+
+/* ── SPLASH SCREEN ── */
+#splashScreen{position:fixed;inset:0;z-index:99999;background:#0f1117;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease}
+#splashScreen.splash-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.splash-content{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px;text-align:center}
+.splash-brand-row{font-size:.75rem;font-weight:700;letter-spacing:.12em;color:#4a5568;text-transform:uppercase;margin-bottom:4px}
+#splashVersion{color:#f0a500}
+.splash-icon-wrap{width:96px;height:96px;margin:8px 0}
+.splash-app-icon{width:96px;height:96px;border-radius:20px;object-fit:contain}
+.splash-icon-fallback{width:96px;height:96px;border-radius:20px;background:linear-gradient(135deg,#2a1f00 0%,#1a1300 100%);border:2px solid #f0a50033;display:flex;align-items:center;justify-content:center;font-size:2.8rem}
+.splash-title-block{margin-top:4px}
+.splash-app-title{margin:0;font-size:1.05rem;font-weight:800;letter-spacing:.18em;color:#e8ecf4;text-transform:uppercase}
+.splash-app-subtitle{margin:2px 0 0 0;font-size:.78rem;font-weight:500;letter-spacing:.22em;color:#f0a500;text-transform:uppercase}
+.splash-progress{width:160px;height:3px;background:#1e2330;border-radius:2px;overflow:hidden;margin-top:20px}
+.splash-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#d4870a,#f0a500);border-radius:2px;transition:width .08s linear}
 </style>
 </head>
 <body>
+<div id="splashScreen" role="status" aria-label="Carregando 5S Assessment">
+  <div class="splash-content">
+    <div class="splash-brand-row">OPERIX · <span id="splashVersion">v3.0.0</span></div>
+    <div class="splash-icon-wrap">
+      <img class="splash-app-icon" src="Assets/Icon-512.png" alt="5S Assessment"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="splash-icon-fallback" style="display:none">📋</div>
+    </div>
+    <div class="splash-title-block">
+      <p class="splash-app-title">5S</p>
+      <p class="splash-app-subtitle">ALMOXARIFADO</p>
+    </div>
+    <div class="splash-progress"><div class="splash-progress-bar" id="splashBar"></div></div>
+  </div>
+</div>
+<script>
+(function(){
+  var splash=document.getElementById('splashScreen');
+  var bar=document.getElementById('splashBar');
+  if(!splash||!bar)return;
+  var progress=0,DURATION=2200,INTERVAL=40;
+  var STEP=100/(DURATION/INTERVAL);
+  var timer=setInterval(function(){
+    progress=Math.min(progress+STEP,100);
+    bar.style.width=progress+'%';
+    if(progress>=100){
+      clearInterval(timer);
+      setTimeout(function(){
+        splash.classList.add('splash-hidden');
+        splash.addEventListener('transitionend',function(){splash.remove();},{once:true});
+      },300);
+    }
+  },INTERVAL);
+})();
+</script>
+
 
 <header>
   <img src="Assets/Icon-192.png" alt="OPERIX Logo" class="operix-logo">
