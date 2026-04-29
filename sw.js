@@ -1,8 +1,9 @@
 'use strict';
 
-const CACHE_NAME = '5s-assessment-v3.0.1';
+const CACHE_NAME = '5s-assessment-v3.0.2';
 const ASSETS = [
   './',
+  './index.html',
   './Index.html',
   './manifest.json',
   './audit5s-whatsapp-share-fix.js',
@@ -36,7 +37,7 @@ self.addEventListener('fetch', e => {
         .then(html => new Response(injectScripts(html), {
           headers: {'Content-Type':'text/html; charset=UTF-8'}
         }))
-        .catch(() => caches.match('./Index.html').then(cached => cached ? cached.text() : '')
+        .catch(() => caches.match('./index.html').then(cached => cached ? cached.text() : '')
           .then(html => new Response(injectScripts(html), {
             headers: {'Content-Type':'text/html; charset=UTF-8'}
           })))
