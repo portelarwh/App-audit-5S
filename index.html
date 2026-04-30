@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>5S - Maturidade v3</title>
-  <link rel="manifest" href="manifest.json">
-  <meta http-equiv="refresh" content="0; url=Index.html">
-  <script>
-    (function(){
-      var target = 'Index.html' + window.location.search + window.location.hash;
-      window.location.replace(target);
-    })();
-  </script>
-</head>
-<body style="margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0f1117;color:#e8ecf4;font-family:Arial,sans-serif;">
-  <div style="text-align:center;padding:24px;">
-    <strong>Carregando Audit 5S...</strong><br>
-    <small>Se não abrir automaticamente, <a href="Index.html" style="color:#f0a500;">clique aqui</a>.</small>
-  </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>5S - Maturidade v3</title>
@@ -234,7 +212,7 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
 .comp-pct{font-size:11px;font-weight:700;width:32px;text-align:right;flex-shrink:0}
 .comp-tag{font-size:8px;letter-spacing:1px;font-family:'Barlow Condensed',sans-serif;font-weight:700;width:40px;flex-shrink:0}
 .comp-gap{font-size:10px;width:140px;flex-shrink:0;text-align:right;font-weight:600}
-.rt-head,.rt-row{display:grid;grid-template-columns:2fr 80px 70px 70px 70px 70px 70px 70px;padding:10px 16px;gap:6px;align-items:center}
+.rt-head,.rt-row{display:grid;grid-template-columns:2fr 80px 70px 70px 70px 70px 70px 70px 44px;padding:10px 16px;gap:6px;align-items:center}
 .rt-head{background:var(--surface);border-bottom:1px solid var(--border);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700}
 .rt-row{border-bottom:1px solid var(--border);font-size:12px}.rt-row:last-child{border-bottom:none}
 .rt-row:hover{background:rgba(255,255,255,.02)}
@@ -244,6 +222,8 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
 .rt-sp{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-align:center;color:var(--muted)}
 .responses-table{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px}
 .empty-state{text-align:center;padding:40px;color:var(--muted);font-size:13px}
+.btn-del{background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:14px;padding:2px 6px;border-radius:4px;transition:all .15s;line-height:1}
+.btn-del:hover{color:var(--red);background:rgba(224,82,82,.12)}
 
 /* ── GLOSSARY ── */
 .gloss-search{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;width:100%;margin-bottom:20px;transition:border-color .2s}
@@ -283,51 +263,36 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
 .footer-separator{color:var(--muted)}
 @media print{.app-footer{display:none!important}}
 
-
 @media(max-width:620px){
   .mode-cards{grid-template-columns:1fr}.action-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}.res-top{grid-template-columns:1fr}
   .rating-grid{grid-template-columns:repeat(2,1fr)}.audit-grid{grid-template-columns:repeat(3,1fr)}
   .kpi-row{grid-template-columns:repeat(2,1fr)}.container{padding:18px 13px}
-  header{padding:9px 13px}.rt-head,.rt-row{grid-template-columns:2fr 70px 60px;font-size:11px}
-  .rt-head>*:nth-child(n+4),.rt-row>*:nth-child(n+4){display:none}
+  header{padding:9px 13px}
+  .rt-head,.rt-row{grid-template-columns:2fr 70px 60px 36px;font-size:11px}
+  .rt-head>*:nth-child(n+4):not(:last-child),.rt-row>*:nth-child(n+4):not(:last-child){display:none}
 }
 
-/* ── DESKTOP ── */
 @media(min-width:1024px){
   .container{max-width:1080px;padding:40px 48px}
-
-  /* Landing: modo de avaliação lado a lado com mais respiro */
   .landing-hero h1{font-size:58px}
   .mode-cards{grid-template-columns:1fr 1fr;gap:20px}
   .mode-card{padding:32px 28px}
   .action-grid{grid-template-columns:1fr 1fr 1fr;gap:14px}
-
-  /* Questions: pergunta + botões numa linha mais confortável */
   .q-card{padding:22px 28px}
   .rating-grid{grid-template-columns:repeat(4,1fr);gap:10px}
   .audit-grid{grid-template-columns:repeat(6,1fr);gap:8px}
   .r-btn{padding:14px 10px}.r-btn .rs{font-size:22px}
   .a-btn{padding:12px 6px;font-size:18px}
-
-  /* Results: radar e score maiores */
   .res-top{grid-template-columns:1fr 1fr;gap:24px}
   .score-big{font-size:80px}
   #radarCanvas{width:280px;height:280px}
-
-  /* Dashboard: KPIs em 4 colunas, tabela com todas colunas */
   .kpi-row{grid-template-columns:repeat(4,1fr);gap:16px}
   .kpi-val{font-size:38px}
-  .rt-head,.rt-row{grid-template-columns:2fr 90px 80px 80px 80px 80px 80px 80px}
+  .rt-head,.rt-row{grid-template-columns:2fr 90px 80px 80px 80px 80px 80px 80px 44px}
   .rt-head>*,.rt-row>*{display:block}
-
-  /* Dispersão + comparação lado a lado no dashboard */
   .dash-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-
-  /* Form ident mais estreito centralizado */
   #screen-ident .form-card{max-width:640px;margin:0 auto}
-
-  /* Glossário em 2 colunas */
   #glossList{column-count:2;column-gap:16px}
   #glossList .gloss-item{break-inside:avoid;margin-bottom:14px}
 }
@@ -337,29 +302,27 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
   .landing-hero h1{font-size:68px}
 }
 
-/* ── Floating Back Button (injected) ─────────────────────────── */
+/* ── Floating Back Button ── */
 #float-back{
-  position:fixed; right:20px; bottom:20px; z-index:9998;
-  width:54px; height:54px; border-radius:50%;
-  background:var(--accent,#f0a500); color:#0f1117;
-  border:none; cursor:pointer;
-  font-size:28px; font-weight:900; line-height:1;
-  display:none; align-items:center; justify-content:center;
-  box-shadow:0 6px 18px rgba(0,0,0,.45), 0 0 0 2px rgba(0,0,0,.15);
-  transition:transform .15s ease, box-shadow .15s ease;
+  position:fixed;right:20px;bottom:20px;z-index:9998;
+  width:54px;height:54px;border-radius:50%;
+  background:var(--accent,#f0a500);color:#0f1117;
+  border:none;cursor:pointer;
+  font-size:28px;font-weight:900;line-height:1;
+  display:none;align-items:center;justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.45),0 0 0 2px rgba(0,0,0,.15);
+  transition:transform .15s ease,box-shadow .15s ease;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  padding:0; padding-bottom:3px;
+  padding:0;padding-bottom:3px;
 }
-#float-back:hover{ transform:scale(1.06); box-shadow:0 8px 22px rgba(0,0,0,.55); }
-#float-back:active{ transform:scale(.94); }
-[data-theme="light"] #float-back{
-  background:#f0a500; color:#1a1f2e;
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
-}
-@media print { #float-back{ display:none !important; } }
+#float-back:hover{transform:scale(1.06);box-shadow:0 8px 22px rgba(0,0,0,.55);}
+#float-back:active{transform:scale(.94);}
+[data-theme="light"] #float-back{background:#f0a500;color:#1a1f2e;box-shadow:0 6px 18px rgba(0,0,0,.25);}
+@media print{#float-back{display:none!important;}}
+
 /* WhatsApp share button */
-.btn-whatsapp{ background:#25d366 !important; color:#fff !important; border:none !important; }
-.btn-whatsapp:hover{ background:#20b358 !important; }
+.btn-whatsapp{background:#25d366!important;color:#fff!important;border:none!important;}
+.btn-whatsapp:hover{background:#20b358!important;}
 
 /* ── SPLASH SCREEN ── */
 #splashScreen{position:fixed;inset:0;z-index:99999;background:#0f1117;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease}
@@ -378,9 +341,11 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
 </style>
 </head>
 <body>
+
+<!-- ══════ SPLASH ══════ -->
 <div id="splashScreen" role="status" aria-label="Carregando 5S Assessment">
   <div class="splash-content">
-    <div class="splash-brand-row">Auditoria 5S · <span id="splashVersion">v3.0.0</span></div>
+    <div class="splash-brand-row">Auditoria 5S · <span id="splashVersion">v3.0.1</span></div>
     <div class="splash-icon-wrap">
       <img class="splash-app-icon" src="Assets/Icon-512.png" alt="5S Assessment"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -414,7 +379,7 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
 })();
 </script>
 
-
+<!-- ══════ HEADER ══════ -->
 <header>
   <img src="Assets/Icon-192.png" alt="OPERIX Logo" class="operix-logo">
   <div>
@@ -430,6 +395,7 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
   </div>
 </header>
 
+<!-- ══════ PROGRESS ══════ -->
 <div class="prog-wrap" id="progWrap">
   <div class="step-dots" id="stepDots"></div>
   <div class="prog-lbl" id="progLbl"></div>
@@ -587,19 +553,19 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
         <button class="ftab" id="ftAudit" onclick="setFilter('audit')">Auditoria</button>
       </div>
       <button class="btn btn-blue" style="padding:5px 12px;font-size:12px" onclick="exportCSV()">⬇ CSV</button>
-      <button class="btn btn-secondary" style="padding:5px 12px;font-size:12px" onclick="clearAll()">🗑 Limpar</button>
+      <button class="btn btn-secondary" style="padding:5px 12px;font-size:12px" onclick="clearAll()">🗑 Limpar tudo</button>
     </div>
   </div>
   <div class="kpi-row" id="kpiRow"></div>
   <div class="dash-cols">
-  <div class="section-card">
-    <h3>Dispersão por Senso <span style="font-weight:400;color:var(--muted);font-size:10px;letter-spacing:0">— barra = mín→máx · ponto = média</span></h3>
-    <div id="dispRows"></div>
-  </div>
-  <div class="section-card" id="compCard">
-    <h3>Percepção × Auditoria Física</h3>
-    <div id="compRows"></div>
-  </div>
+    <div class="section-card">
+      <h3>Dispersão por Senso <span style="font-weight:400;color:var(--muted);font-size:10px;letter-spacing:0">— barra = mín→máx · ponto = média</span></h3>
+      <div id="dispRows"></div>
+    </div>
+    <div class="section-card" id="compCard">
+      <h3>Percepção × Auditoria Física</h3>
+      <div id="compRows"></div>
+    </div>
   </div>
   <div class="responses-table">
     <div class="rt-head">
@@ -608,6 +574,7 @@ header{background:var(--surface);border-bottom:2px solid var(--accent);padding:1
       <div style="text-align:center">S1</div><div style="text-align:center">S2</div>
       <div style="text-align:center">S3</div><div style="text-align:center">S4</div>
       <div style="text-align:center">S5</div>
+      <div></div>
     </div>
     <div id="tableBody"></div>
   </div>
@@ -750,7 +717,7 @@ const GLOSSARY = [
   {term:'Curva ABC',sub:'Classificação por giro',tag:'Gestão de Estoque',tagColor:'#f0a500',def:'Método de classificação de itens por frequência de uso (ou valor). Itens A (alta rotatividade): ~20% dos itens, ~80% do movimento — devem ficar nos melhores locais, nível da cintura, próximos à saída. Itens C (baixo giro): podem ficar nas posições menos acessíveis.'},
   {term:'Maturidade 5S',sub:'Níveis de evolução do programa',tag:'Avaliação',tagColor:'#a855f7',def:'Escala de 5 níveis que descreve o grau de implantação e sustentação do 5S: Nível 1 Reativo (0–20%), Nível 2 Iniciante (21–40%), Nível 3 Estruturado (41–60%), Nível 4 Padronizado (61–80%), Nível 5 Sustentado (81–100%). O objetivo não é a nota, mas a evolução consistente ao longo do tempo.'},
   {term:'Percepção × Auditoria',sub:'Dois olhares complementares',tag:'Metodologia',tagColor:'#3a7bd5',def:'A Percepção mede como o colaborador enxerga a realidade (subjetivo, revela engajamento e cultura). A Auditoria Física mede o que existe de fato no ambiente (objetivo, baseado em evidência). O gap entre os dois é o dado mais rico: percepção muito maior que auditoria indica excesso de confiança; auditoria maior que percepção indica baixo engajamento ou desconhecimento.'},
-  {term:'Ponderação dos Sensos',sub:'Por que cada S tem um peso diferente no score?',tag:'Metodologia',tagColor:'#f0a500',def:'O score final não é uma média simples — cada senso tem um peso que reflete seu impacto prático na sustentação do 5S. Importante: não existe um padrão universal de ponderação. Os pesos desta ferramenta (SEIRI 15%, SEITON 20%, SEISO 15%, SEIKETSU 20%, SHITSUKE 30%) foram definidos com base em raciocínio prático, alinhado à ênfase de referências como o modelo de maturidade do Kaizen Institute, o livro "5 Pillars of the Visual Workplace" (Hirano) e frameworks de auditoria do 5S Research & Practice Journal — todos convergem em dar maior peso ao Shitsuke, pois cultura e disciplina são o que separa um 5S de evento de um 5S permanente. Os percentuais podem e devem ser ajustados conforme a maturidade e o contexto de cada programa. Fórmula: score = Σ (% do senso × peso do senso).'},
+  {term:'Ponderação dos Sensos',sub:'Por que cada S tem um peso diferente no score?',tag:'Metodologia',tagColor:'#f0a500',def:'O score final não é uma média simples — cada senso tem um peso que reflete seu impacto prático na sustentação do 5S. Importante: não existe um padrão universal de ponderação. Os pesos desta ferramenta (SEIRI 15%, SEITON 20%, SEISO 15%, SEIKETSU 20%, SHITSUKE 30%) foram definidos com base em raciocínio prático, alinhado à ênfase de referências como o modelo de maturidade do Kaizen Institute, o livro "5 Pillars of the Visual Workplace" (Hirano) e frameworks de auditoria do 5S Research & Practice Journal. Os percentuais podem e devem ser ajustados conforme a maturidade e o contexto de cada programa.'},
   {term:'Acuracidade de Estoque',tag:'Indicador',tagColor:'#f0a500',def:'Percentual de posições do estoque físico que coincidem com o registro no sistema. Fórmula: (posições corretas / total de posições) × 100. Meta típica: ≥ 95%. Evidência no 5S: inventário rotativo documentado com resultado visível e desvios tratados.'},
 ];
 
@@ -760,13 +727,25 @@ const GLOSSARY = [
 let currentMode='perc', currentSection=0, answers={}, respondent={}, dashFilter='all', resultSaved=false;
 
 // ══════════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════════
+function esc(str){ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function fmtD(d){if(!d)return'—';const[y,m,day]=d.split('-');return`${day}/${m}/${y}`;}
+function showToast(msg,color='#3ecf72'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.background=color;
+  t.style.color=(color==='#3ecf72'||color==='#f0a500')?'#0f1117':'#fff';
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ══════════════════════════════════════════
 // THEME
 // ══════════════════════════════════════════
 function toggleTheme(){
   const isLight=document.documentElement.dataset.theme==='light';
   document.documentElement.dataset.theme=isLight?'':'light';
   localStorage.setItem('5s_theme',isLight?'dark':'light');
-  document.querySelectorAll('#themeBtn').forEach(b=>b.textContent=isLight?'☀️':'🌙');
+  document.querySelectorAll('#themeBtn').forEach(b=>b.textContent=isLight?'🌙':'☀️');
 }
 
 // ══════════════════════════════════════════
@@ -778,6 +757,8 @@ window.onload=()=>{
   document.getElementById('f-data').value=new Date().toISOString().split('T')[0];
   renderWeightLegend();
   renderGlossary();
+  // FIX: initialize float-back button state correctly
+  updateBackBtn('screen-landing');
 };
 
 const WEIGHT_RATIONALE = [
@@ -807,7 +788,7 @@ function renderWeightLegend(){
     <div id="weightInfoPanel" style="display:none;margin-top:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;max-width:480px;margin-left:auto;margin-right:auto">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Por que esses pesos?</div>
       <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px;padding:8px 10px;background:var(--bg);border-radius:6px;border-left:3px solid var(--accent)">
-        Não existe um padrão universal de ponderação 5S. Estes pesos foram definidos com base em raciocínio prático, alinhado à ênfase de referências como o modelo de maturidade do <strong style="color:var(--text)">Kaizen Institute</strong>, o livro <strong style="color:var(--text)">"5 Pillars of the Visual Workplace" (Hirano)</strong> e frameworks de auditoria publicados no <strong style="color:var(--text)">5S Research & Practice Journal</strong> — todos convergem em dar maior peso ao Shitsuke, mas os percentuais variam por empresa e contexto. Ajuste conforme a realidade do seu programa.
+        Não existe um padrão universal de ponderação 5S. Estes pesos foram definidos com base em raciocínio prático, alinhado à ênfase de referências como o modelo de maturidade do <strong style="color:var(--text)">Kaizen Institute</strong>, o livro <strong style="color:var(--text)">"5 Pillars of the Visual Workplace" (Hirano)</strong> e frameworks de auditoria publicados no <strong style="color:var(--text)">5S Research & Practice Journal</strong>. Ajuste conforme a realidade do seu programa.
       </div>
       ${SECTIONS.map((s,i)=>`
         <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px">
@@ -834,18 +815,69 @@ function toggleWeightInfo(){
 // ══════════════════════════════════════════
 // NAVIGATION
 // ══════════════════════════════════════════
+// History stack for floating back button
+window._backStack = [];
+
 function showScreen(id){
+  const cur=document.querySelector('.screen.active');
+  if(cur&&cur.id&&cur.id!==id){
+    _backStack.push(cur.id);
+    if(_backStack.length>20)_backStack.shift();
+  }
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
+  updateBackBtn(id);
 }
+
 function goToLanding(){
+  _backStack=[];
   document.getElementById('progWrap').style.display='none';
   document.getElementById('hdrRight').innerHTML=`
     <button class="btn btn-ghost" style="padding:5px 10px;font-size:18px;line-height:1" id="themeBtn" onclick="toggleTheme()" title="Alternar tema">${document.documentElement.dataset.theme==='light'?'🌙':'☀️'}</button>
     <button class="btn btn-ghost" style="padding:5px 12px;font-size:12px" onclick="showScreen('screen-glossary')">📖 Glossário</button>`;
-  showScreen('screen-landing');
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-landing').classList.add('active');
+  window.scrollTo(0,0);
+  updateBackBtn('screen-landing');
 }
+
+function updateBackBtn(id){
+  const btn=document.getElementById('float-back');
+  if(!btn)return;
+  btn.style.display=(id&&id!=='screen-landing')?'flex':'none';
+}
+
+function fixedBack(){
+  const active=document.querySelector('.screen.active');
+  const cur=active?active.id:'';
+
+  // FIX 1: In questions, go back section-by-section using renderSection (not renderQuestions)
+  if(cur==='screen-questions'&&typeof currentSection!=='undefined'&&currentSection>0){
+    currentSection--;
+    renderSection();       // was: renderQuestions (non-existent)
+    updateProgress();      // was: missing — dots were not updating
+    window.scrollTo(0,0);
+    return;
+  }
+
+  // Pop from stack, skipping self
+  let prev;
+  while(_backStack.length){
+    prev=_backStack.pop();
+    if(prev&&prev!==cur)break;
+    prev=null;
+  }
+  if(prev){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById(prev).classList.add('active');
+    window.scrollTo(0,0);
+    updateBackBtn(prev);
+  } else {
+    goToLanding();
+  }
+}
+
 function selectMode(m){
   currentMode=m;
   const badge=document.getElementById('identBadge');
@@ -854,6 +886,7 @@ function selectMode(m){
   badge.style.color=m==='perc'?'#3a7bd5':'#f0a500';
   showScreen('screen-ident');
 }
+
 function selectPrintMode(){showScreen('screen-print-select');}
 
 // ══════════════════════════════════════════
@@ -873,10 +906,12 @@ function startAssessment(){
   renderSection();
   updateProgress();
 }
+
 function buildDots(){
   document.getElementById('stepDots').innerHTML=SECTIONS.map((_,i)=>`<div class="step-dot" id="dot-${i}"></div>`).join('');
   document.getElementById('progWrap').style.display='flex';
 }
+
 function updateProgress(){
   SECTIONS.forEach((_,i)=>{
     const d=document.getElementById(`dot-${i}`);
@@ -884,6 +919,7 @@ function updateProgress(){
   });
   document.getElementById('progLbl').textContent=`${currentSection+1} / ${SECTIONS.length}`;
 }
+
 function renderSection(){
   const s=SECTIONS[currentSection];
   const isAudit=currentMode==='audit';
@@ -924,12 +960,14 @@ function renderSection(){
   document.getElementById('btnBack').style.visibility=currentSection===0?'hidden':'visible';
   document.getElementById('btnNext').textContent=currentSection===SECTIONS.length-1?'Ver Resultado →':'Avançar →';
 }
+
 function toggleHelp(qi){
   const panel=document.getElementById(`help-${qi}`);
   const btn=document.getElementById(`hbtn-${qi}`);
   const open=panel.classList.toggle('show');
   btn.classList.toggle('open',open);
 }
+
 function selAns(sid,qi,val){
   if(!answers[sid])answers[sid]={};
   answers[sid][qi]=val;
@@ -937,6 +975,7 @@ function selAns(sid,qi,val){
   const sel=isAudit?'.a-btn':'.r-btn';
   document.querySelectorAll(`#qc-${qi} ${sel}`).forEach(b=>b.classList.toggle('sel',+b.dataset.v===val));
 }
+
 function goNext(){
   const s=SECTIONS[currentSection];
   const qs=currentMode==='audit'?s.audit:s.perc;
@@ -945,6 +984,8 @@ function goNext(){
   if(currentSection<SECTIONS.length-1){currentSection++;updateProgress();renderSection();window.scrollTo(0,0);}
   else showResults();
 }
+
+// FIX: removed double showScreen call — goToLanding handles navigation cleanly
 function cancelAssessment(){
   const answered=Object.keys(answers).length;
   const msg=answered>0
@@ -953,10 +994,17 @@ function cancelAssessment(){
   if(!confirm(msg))return;
   answers={};currentSection=0;
   document.getElementById('progWrap').style.display='none';
-  showScreen('screen-landing');
   goToLanding();
 }
-function goBack(){if(currentSection>0){currentSection--;updateProgress();renderSection();window.scrollTo(0,0);}}
+
+function goBack(){
+  if(currentSection>0){
+    currentSection--;
+    updateProgress();
+    renderSection();
+    window.scrollTo(0,0);
+  }
+}
 
 // ══════════════════════════════════════════
 // SCORING
@@ -973,6 +1021,7 @@ function calcScores(mode,ans){
   sc.overall=Math.round(SECTIONS.reduce((sum,s)=>sum+sc[s.id]*WEIGHTS[s.id],0));
   return sc;
 }
+
 function getMaturity(pct){return MATURITY.find(m=>pct<=m.max)||MATURITY[4];}
 
 // ══════════════════════════════════════════
@@ -994,14 +1043,13 @@ function showResults(){
     ?'<span style="background:rgba(58,123,213,.2);color:#3a7bd5;font-size:10px;padding:2px 8px;border-radius:3px;font-weight:700;letter-spacing:1px">PERCEPÇÃO</span>'
     :'<span style="background:rgba(240,165,0,.2);color:#f0a500;font-size:10px;padding:2px 8px;border-radius:3px;font-weight:700;letter-spacing:1px">AUDITORIA</span>';
   document.getElementById('respInfo').innerHTML=`
-    <div class="ri"><span>Nome</span><span>${respondent.nome}</span></div>
-    <div class="ri"><span>Função</span><span>${respondent.funcao}</span></div>
-    <div class="ri"><span>Turno</span><span>${respondent.turno}</span></div>
+    <div class="ri"><span>Nome</span><span>${esc(respondent.nome)}</span></div>
+    <div class="ri"><span>Função</span><span>${esc(respondent.funcao)}</span></div>
+    <div class="ri"><span>Turno</span><span>${esc(respondent.turno)}</span></div>
     <div class="ri"><span>Data</span><span>${fmtD(respondent.data)}</span></div>
     <div class="ri"><span>Tipo</span><span>${mTag}</span></div>
   `;
 
-  // Maturity card
   document.getElementById('maturityCard').innerHTML=`
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Nível de Maturidade</div>
@@ -1023,11 +1071,17 @@ function showResults(){
     </div>`).join('');
 
   drawRadar(sc);
+
+  // Toggle WhatsApp button
+  const wa=document.getElementById('btnWhatsApp');
+  if(wa) wa.style.display=currentMode==='audit'?'inline-flex':'none';
+
   document.getElementById('btnSave').textContent='✓ Salvar Baseline';
   document.getElementById('btnSave').disabled=false;
   resultSaved=false;
   showScreen('screen-result');
 }
+
 function drawRadar(sc){
   const canvas=document.getElementById('radarCanvas');
   const size=window.innerWidth>=1024?280:220;
@@ -1045,22 +1099,44 @@ function drawRadar(sc){
   SECTIONS.forEach((s,i)=>{c.font='bold 10px Barlow Condensed,sans-serif';c.fillStyle=s.color;c.textAlign='center';c.textBaseline='middle';c.fillText(s.label,cx+lR*Math.cos(ang[i]),cy+lR*Math.sin(ang[i]));});
 }
 
+// FIX: redraw radar on window resize if result screen is active
+window.addEventListener('resize',()=>{
+  const resultActive=document.getElementById('screen-result')?.classList.contains('active');
+  if(resultActive){
+    const sc=calcScores();
+    drawRadar(sc);
+  }
+});
+
 // ══════════════════════════════════════════
-// SAVE
+// SAVE / STORAGE
 // ══════════════════════════════════════════
 function saveResponse(){
   if(resultSaved){showToast('Já foi salvo!','#f0a500');return;}
   const sc=calcScores();
   const saved=getSaved();
-  saved.push({id:Date.now(),respondent,scores:sc,answers});
+  // FIX: store only scores + respondent, not raw answers (keeps localStorage lean)
+  saved.push({id:Date.now(),respondent,scores:sc});
   localStorage.setItem('5s_almo_v3',JSON.stringify(saved));
   showToast('Salvo na baseline!');
   document.getElementById('btnSave').textContent='✓ Salvo';
   document.getElementById('btnSave').disabled=true;
   resultSaved=true;
 }
+
 function getSaved(){return JSON.parse(localStorage.getItem('5s_almo_v3')||'[]');}
-function clearAll(){if(!confirm('Limpar todas as respostas?'))return;localStorage.removeItem('5s_almo_v3');showToast('Dados apagados.');renderDashboard();}
+
+// FIX: delete individual response
+function deleteResponse(id){
+  if(!confirm('Remover esta resposta da baseline?'))return;
+  const saved=getSaved().filter(e=>e.id!==id);
+  localStorage.setItem('5s_almo_v3',JSON.stringify(saved));
+  showToast('Resposta removida.','#e05252');
+  renderDashboard();
+}
+
+function clearAll(){if(!confirm('Limpar TODAS as respostas?'))return;localStorage.removeItem('5s_almo_v3');showToast('Dados apagados.');renderDashboard();}
+
 function exportCSV(){
   const data=getFiltered();
   if(!data.length){showToast('Sem dados!','#e05252');return;}
@@ -1075,13 +1151,24 @@ function exportCSV(){
 // DASHBOARD
 // ══════════════════════════════════════════
 function showDashboard(){renderDashboard();showScreen('screen-dashboard');}
-function setFilter(f){dashFilter=f;['all','perc','audit'].forEach(x=>document.getElementById('ft'+x.charAt(0).toUpperCase()+x.slice(1)).classList.toggle('active',x===f));renderDashboard();}
-function getFiltered(){const all=getSaved();return dashFilter==='all'?all:all.filter(e=>e.respondent.mode===dashFilter);}
+function setFilter(f){
+  dashFilter=f;
+  ['all','perc','audit'].forEach(x=>document.getElementById('ft'+x.charAt(0).toUpperCase()+x.slice(1)).classList.toggle('active',x===f));
+  renderDashboard();
+}
+
+function getFiltered(){
+  const all=getSaved();
+  return dashFilter==='all'?all:all.filter(e=>e.respondent.mode===dashFilter);
+}
+
 function renderDashboard(){
+  // FIX: use getFiltered() for ALL elements including the table (consistent with active filter)
   const data=getFiltered();
   const percData=getSaved().filter(e=>e.respondent.mode==='perc');
   const auditData=getSaved().filter(e=>e.respondent.mode==='audit');
   const kpiEl=document.getElementById('kpiRow');
+
   if(!data.length){
     kpiEl.innerHTML='';
     document.getElementById('dispRows').innerHTML='<div class="empty-state">Nenhuma resposta salva. Realize avaliações e salve na baseline.</div>';
@@ -1089,6 +1176,7 @@ function renderDashboard(){
     document.getElementById('compRows').innerHTML='<div style="color:var(--muted);font-size:13px;padding:8px 0">Necessário ter avaliações de ambos os tipos.</div>';
     return;
   }
+
   const ov=data.map(e=>e.scores.overall);
   const avg=Math.round(ov.reduce((a,b)=>a+b,0)/ov.length);
   const mat=getMaturity(avg);
@@ -1098,6 +1186,7 @@ function renderDashboard(){
     <div class="kpi-card"><div class="kpi-val">${data.length}</div><div class="kpi-lbl">Respostas</div></div>
     <div class="kpi-card"><div class="kpi-val" style="color:var(--muted)">${Math.min(...ov)}–${Math.max(...ov)}%</div><div class="kpi-lbl">Amplitude</div></div>
   `;
+
   document.getElementById('dispRows').innerHTML=SECTIONS.map(s=>{
     const vals=data.map(e=>e.scores[s.id]);
     const avg=Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
@@ -1136,14 +1225,16 @@ function renderDashboard(){
     compEl.innerHTML='<div style="color:var(--muted);font-size:13px;padding:8px 0">É necessário ter respostas de <strong style="color:var(--text)">ambos</strong> os tipos para exibir a comparação.</div>';
   }
 
-  document.getElementById('tableBody').innerHTML=getSaved().slice().reverse().map(e=>{
-    const o=e.scores.overall;const c=o>=75?'#3ecf72':o>=50?'#f0a500':'#e05252';
-    const dim=dashFilter!=='all'&&e.respondent.mode!==dashFilter?'style="opacity:.3"':'';
-    return `<div class="rt-row" ${dim}>
-      <div><span style="font-weight:600">${e.respondent.nome}</span><br><span style="font-size:10px;color:var(--muted)">${e.respondent.funcao} · ${fmtD(e.respondent.data)}</span></div>
+  // FIX: table now uses filtered data; FIX: names escaped; FIX: delete button per row
+  document.getElementById('tableBody').innerHTML=data.slice().reverse().map(e=>{
+    const o=e.scores.overall;
+    const c=o>=75?'#3ecf72':o>=50?'#f0a500':'#e05252';
+    return `<div class="rt-row">
+      <div><span style="font-weight:600">${esc(e.respondent.nome)}</span><br><span style="font-size:10px;color:var(--muted)">${esc(e.respondent.funcao)} · ${fmtD(e.respondent.data)}</span></div>
       <div><span class="rt-tag ${e.respondent.mode}">${e.respondent.mode==='perc'?'PERC':'AUDIT'}</span></div>
       <div class="rt-score" style="color:${c}">${o}%</div>
       ${SECTIONS.map(s=>`<div class="rt-sp" style="color:${s.color}">${e.scores[s.id]}%</div>`).join('')}
+      <div><button class="btn-del" onclick="deleteResponse(${e.id})" title="Remover esta resposta">✕</button></div>
     </div>`;
   }).join('');
 }
@@ -1164,6 +1255,35 @@ function renderGlossary(filter=''){
     :'<div class="empty-state">Nenhum termo encontrado.</div>';
 }
 function filterGloss(){renderGlossary(document.getElementById('glossSearch').value);}
+
+// ══════════════════════════════════════════
+// WHATSAPP SHARE
+// ══════════════════════════════════════════
+function shareWhatsApp(){
+  try{
+    const sc=calcScores();
+    const o=sc.overall;
+    const mat=getMaturity(o);
+    const lines=[];
+    lines.push('*📋 Relatório 5S — Auditoria Física*');
+    lines.push('');
+    lines.push('*Responsável:* '+(respondent.nome||'-'));
+    lines.push('*Função:* '+(respondent.funcao||'-'));
+    lines.push('*Turno:* '+(respondent.turno||'-'));
+    lines.push('*Data:* '+fmtD(respondent.data||''));
+    lines.push('');
+    lines.push('*Pontuação Ponderada:* '+o+'%');
+    lines.push('*Nível de Maturidade:* '+mat.level+' — '+mat.name);
+    lines.push('');
+    lines.push('*Resultado por Senso:*');
+    SECTIONS.forEach(function(s){lines.push('• '+s.label+': '+sc[s.id]+'%  (peso '+s.weight+'%)');});
+    lines.push('');
+    lines.push(mat.desc);
+    lines.push('');
+    lines.push('_Gerado pelo OPERIX • 5S Assessment_');
+    window.open('https://wa.me/?text='+encodeURIComponent(lines.join('\n')),'_blank');
+  }catch(e){alert('Não foi possível gerar a mensagem: '+e.message);}
+}
 
 // ══════════════════════════════════════════
 // PRINT FORM
@@ -1316,95 +1436,9 @@ function printForm(mode){
   w.document.close();
   setTimeout(()=>w.print(),600);
 }
-
-// ══════════════════════════════════════════
-// UTILS
-// ══════════════════════════════════════════
-function fmtD(d){if(!d)return'—';const[y,m,day]=d.split('-');return`${day}/${m}/${y}`;}
-function showToast(msg,color='#3ecf72'){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.style.background=color;
-  t.style.color=(color==='#3ecf72'||color==='#f0a500')?'#0f1117':'#fff';
-  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);
-}
-
-// ── Injected: floating back, updateBackBtn, shareWhatsApp ──
-(function(){
-  // History stack of screens for the floating back
-  window._backStack = [];
-  var _origShowScreen = window.showScreen;
-  window.showScreen = function(id){
-    try{
-      var cur = document.querySelector('.screen.active');
-      if(cur && cur.id && cur.id !== id){ _backStack.push(cur.id); if(_backStack.length>20) _backStack.shift(); }
-    }catch(e){}
-    _origShowScreen(id);
-    updateBackBtn(id);
-  };
-  window.fixedBack = function(){
-    var active = document.querySelector('.screen.active');
-    var cur = active ? active.id : '';
-    // Special: from questions go back section-by-section first
-    if(cur === 'screen-questions' && typeof currentSection !== 'undefined' && currentSection > 0){
-      currentSection--;
-      if(typeof renderQuestions === 'function') renderQuestions();
-      window.scrollTo(0,0);
-      return;
-    }
-    // Pop from stack, skipping self
-    var prev;
-    while(_backStack.length){
-      prev = _backStack.pop();
-      if(prev && prev !== cur) break;
-      prev = null;
-    }
-    if(prev){ _origShowScreen(prev); updateBackBtn(prev); }
-    else { goToLanding(); }
-  };
-  window.updateBackBtn = function(id){
-    var btn = document.getElementById('float-back');
-    if(!btn) return;
-    btn.style.display = (id && id !== 'screen-landing') ? 'flex' : 'none';
-  };
-  window.shareWhatsApp = function(){
-    try{
-      var sc = calcScores();
-      var o = sc.overall;
-      var mat = getMaturity(o);
-      var lines = [];
-      lines.push('*📋 Relatório 5S — Auditoria Física*');
-      lines.push('');
-      lines.push('*Responsável:* ' + (respondent.nome||'-'));
-      lines.push('*Função:* ' + (respondent.funcao||'-'));
-      lines.push('*Turno:* ' + (respondent.turno||'-'));
-      lines.push('*Data:* ' + fmtD(respondent.data||''));
-      lines.push('');
-      lines.push('*Pontuação Ponderada:* ' + o + '%');
-      lines.push('*Nível de Maturidade:* ' + mat.level + ' — ' + mat.name);
-      lines.push('');
-      lines.push('*Resultado por Senso:*');
-      SECTIONS.forEach(function(s){ lines.push('• ' + s.label + ': ' + sc[s.id] + '%  (peso ' + s.weight + '%)'); });
-      lines.push('');
-      lines.push(mat.desc);
-      lines.push('');
-      lines.push('_Gerado pelo OPERIX • 5S Assessment_');
-      var msg = encodeURIComponent(lines.join('\n'));
-      window.open('https://wa.me/?text=' + msg, '_blank');
-    }catch(e){ alert('Não foi possível gerar a mensagem: ' + e.message); }
-  };
-  // Toggle WhatsApp button visibility whenever result screen shows
-  var _origShowResults = window.showResults;
-  if(typeof _origShowResults === 'function'){
-    window.showResults = function(){
-      _origShowResults.apply(this, arguments);
-      var wa = document.getElementById('btnWhatsApp');
-      if(wa){ wa.style.display = (currentMode === 'audit') ? 'inline-flex' : 'none'; }
-    };
-  }
-  // Initial state
-  document.addEventListener('DOMContentLoaded', function(){ updateBackBtn('screen-landing'); });
-})();
 </script>
+
+<!-- ══════ FOOTER ══════ -->
 <footer class="app-footer">
   <span class="footer-content">
     Desenvolvido por
@@ -1421,6 +1455,7 @@ function showToast(msg,color='#3ecf72'){
 </footer>
 
 <button id="float-back" onclick="fixedBack()" aria-label="Voltar" title="Voltar">&#8249;</button>
+
 <script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){
@@ -1431,3 +1466,4 @@ if('serviceWorker' in navigator){
 }
 </script>
 </body>
+</html>
